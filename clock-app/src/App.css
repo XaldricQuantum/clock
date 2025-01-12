@@ -1,0 +1,71 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid white; */
+}
+
+body {
+  background-color: #1e555c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.wrapper-container * {
+  padding: 5px 3px;
+}
+
+.brake-controls, .session-controls {
+  display: flex;
+  justify-content: center;
+  padding: 3px 10px;
+
+}
+
+.btn {
+  /* width: 20px; */
+  margin: 3px auto;
+  padding: 2px 20px;
+}
+
+.timer {
+  width: 50px;
+  font-size: 30px;
+}
+
+.timer-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  border: 7px solid #13353a;
+  border-radius: 50px;
+}
+
+.timer-left {
+  font-size: 50px;
+  margin: 5px;
+}
+
+.timers-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.session-timer, .break-timer {
+  padding: 10px;
+}
+
+
