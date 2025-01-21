@@ -35,7 +35,7 @@ body {
 
 .btn {
   /* width: 20px; */
-  margin: 3px auto;
+  margin: 3px 5px;
   padding: 2px 20px;
 }
 
@@ -52,6 +52,7 @@ body {
   padding: 3px 10px;
   border: 7px solid #13353a;
   border-radius: 50px;
+  margin: 10px 3px;
 }
 
 .timer-left {
