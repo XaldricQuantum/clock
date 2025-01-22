@@ -1,6 +1,7 @@
 
 
 function TimerDisplay ({sessionType, timeLeft}) {
+    
 
     const formatTimer = (seconds) => {
         const mins = Math.floor(seconds / 60);

@@ -14,6 +14,10 @@ function App() {
     currentTime: 1500
   })
 
+  const alarm = document.getElementById('beep');
+  // console.log(alarm);
+  
+
   useEffect(() => {
     let timer;
 
@@ -41,6 +45,12 @@ function App() {
     return () => clearTimeout(timer);
   }, [state.isRunning, state.currentTime]);
 
+  useEffect(() => {
+    if (state.currentTime < 5 && state.isRunning) {
+      alarm.play();
+    }
+  }, [state.currentTime])
+
   return (
     <div className='wrapper-container'>
       <h1 className='title'>25 + 5 Clock</h1>
@@ -49,7 +59,9 @@ function App() {
         <SessionTimer state={state} setState={setState}/>
       </div>
         <TimerDisplay sessionType={state.isBreak ? "Break" : "Session"} timeLeft={state.currentTime}/>
-        <Controls state={state} setState={setState}/>
+        <Controls state={state} setState={setState} alarm={alarm}/>
+       
+
     </div>
   )
 }

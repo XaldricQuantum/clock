@@ -16,6 +16,8 @@ function Controls (props) {
             isBreak: false,
             currentTime: 1500
           });
+        props.alarm.pause();
+        props.alarm.currentTime = 0;
         
     }
 

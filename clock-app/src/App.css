@@ -37,6 +37,8 @@ body {
   /* width: 20px; */
   margin: 3px 5px;
   padding: 2px 20px;
+  background: none;
+  color: white;
 }
 
 .timer {
@@ -67,6 +69,12 @@ body {
 
 .session-timer, .break-timer {
   padding: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .timers-container {
+    flex-direction: column;
+  }
 }
 
 

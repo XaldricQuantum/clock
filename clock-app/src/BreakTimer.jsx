@@ -3,12 +3,28 @@
 function BreakTimer (props) {
 
   const incBreak = (event) => {
-    props.setState((prevState) => ({...prevState, break: prevState.break + 1}));
+    if (!props.state.isRunning && props.state.break < 60) {
+      props.setState((prevState) => ({...prevState, break: prevState.break + 1}));
+      updateTimer(true);
+    }
   };
 
   const decBreak = (event) => {
-    props.setState((prevState) => ({...prevState, break: prevState.break - 1}));
+    if (!props.state.isRunning && props.state.break > 1) {
+      props.setState((prevState) => ({...prevState, break: prevState.break - 1}));
+      updateTimer(false);
+    }
   };
+
+  const updateTimer = (isUp) => {
+    if (props.state.isBreak) {
+      if (isUp) {
+        props.setState((prevState) => ({...prevState, currentTime: prevState.currentTime + 60}))
+      }else {
+        props.setState((prevState) => ({...prevState, currentTime: prevState.currentTime - 60}))
+      }
+    }
+  }
 
 return (
     <div className='break-timer'>

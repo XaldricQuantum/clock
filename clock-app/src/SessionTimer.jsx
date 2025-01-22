@@ -3,12 +3,32 @@
 function SessionTimer (props) {
 
   const incSession = (event) => {
-    props.setState((prevState) => ({...prevState, session: prevState.session + 1}));
+    if (!props.state.isRunning && props.state.session < 60) {
+      console.log(`incSession: ${props.state.session}`);
+      
+      props.setState((prevState) => ({...prevState, session: prevState.session + 1}));
+      updateTimer(true)
+    }
   };
 
   const decSession = (event) => {
-    props.setState((prevState) => ({...prevState, session: prevState.session - 1}));
+    if (!props.state.isRunning && props.state.session > 1) {
+      console.log(`decSession: ${props.state.session}`);
+      
+      props.setState((prevState) => ({...prevState, session: prevState.session - 1}));
+      updateTimer(false)
+    }
   };
+
+  const updateTimer = (isUp) => {
+    if (!props.state.isBreak) {
+      if (isUp) {
+        props.setState((prevState) => ({...prevState, currentTime: prevState.currentTime + 60}))
+      }else {
+        props.setState((prevState) => ({...prevState, currentTime: prevState.currentTime - 60}))
+      }
+    }
+  }
 
  
 
