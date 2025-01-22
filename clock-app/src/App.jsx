@@ -10,9 +10,36 @@ function App() {
     break: 5,
     session: 25,
     isRunning: false,
-    currentSession: "main",
+    isBreak: false,
     currentTime: 1500
   })
+
+  useEffect(() => {
+    let timer;
+
+    const runTimer = () => {
+      timer = setTimeout(() => {
+      setState((prevState) => {
+        if (prevState.currentTime > 0) {
+          return {...prevState, currentTime: prevState.currentTime -1}
+        } else {
+          const isBreakeState = !prevState.isBreak;
+          return {
+            ...prevState,
+            isBreak: isBreakeState,
+            currentTime: isBreakeState ? prevState.break * 60 : prevState.session * 60,
+          };
+        };
+      })},1000);
+    };
+
+    if (state.isRunning) {
+      runTimer()
+    }
+
+    //cleanup when timer is not running or component unmount
+    return () => clearTimeout(timer);
+  }, [state.isRunning, state.currentTime]);
 
   return (
     <div className='wrapper-container'>
@@ -21,7 +48,7 @@ function App() {
         <BreakTimer state={state} setState={setState}/>
         <SessionTimer state={state} setState={setState}/>
       </div>
-        <TimerDisplay state={state} setState={setState}/>
+        <TimerDisplay sessionType={state.isBreak ? "Break" : "Session"} timeLeft={state.currentTime}/>
         <Controls state={state} setState={setState}/>
     </div>
   )

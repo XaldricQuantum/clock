@@ -1,21 +1,19 @@
 
 
-function TimerDisplay (props) {
+function TimerDisplay ({sessionType, timeLeft}) {
 
     const formatTimer = (seconds) => {
-        const mins = Math.floor(seconds / 3600);
-        console.log(props.state.currentTime);
-        
-        console.log(mins);
+        const mins = Math.floor(seconds / 60);
+        console.log(timeLeft);
         
         const secs = Math.floor(seconds % 60);
-        return `${mins}:${secs}`
+        return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`
     };
 
     return (
         <div className='timer-display'>
-            <h2 className='current-timmer' id='timer-label'>{props.state.currentSession === "main" ? "Session" : "Break" }</h2>
-            <p className='timer-left' id='time-left'>{formatTimer(props.state.currentTime)}</p>
+            <h2 className='current-timmer' id='timer-label'>{sessionType}</h2>
+            <p className='timer-left' id='time-left'>{formatTimer(timeLeft)}</p>
         </div>
     )
 }
